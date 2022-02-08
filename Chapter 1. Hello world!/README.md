@@ -7,6 +7,7 @@
 This chapter will walk you through setting up STM32CubeIDE for the first time and running HelloWorld on your board. This project uses the NUCLEO-F411RE board but this guide should be applicable to other STM as well.
 Subchapters:
 
+
 - Install STM32CubeIDE 
 - Create a STM32 Project
 - Toggle the on board LED every second.
@@ -33,3 +34,10 @@ To create your first STM32Project open
 
 ## Project: Write "Hello There!" to putty over serial connection.
 
+
+
+
+
+<p align="center">
+    <img src = "BlinkLed_bb.png">
+</p>
