@@ -29,6 +29,29 @@ To create your first STM32Project open
 ## Project: Toggle the on board LED Every second
 
 
+
+```c
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
+
+	  strcpy((char*)buf, "Hello IOT!\r\n");
+	  HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
+
+	  HAL_Delay(1000);
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
+
+
 ## Project: Toggle an external LED on a breadboard every second
 
 
