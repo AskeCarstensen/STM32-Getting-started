@@ -5,6 +5,7 @@
     <img src = "STM32CubeLogo.png">
 </p>
 
+
 - Install STM32CubeIDE 
 - Create a STM32 Project
 - Toggle the on board LED every second.
@@ -14,3 +15,10 @@
 
 ## Install STM32CubeIDE
 
+
+
+
+
+<p align="center">
+    <img src = "BlinkLed_bb.png">
+</p>
