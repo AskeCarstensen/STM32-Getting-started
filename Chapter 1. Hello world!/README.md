@@ -26,9 +26,11 @@ To create your first STM32Project open
     <img src = "IDEHomepage.png">
 </p>
 
-## Project: Toggle the on board LED Every second
+## Exercise 1: Toggle the on board LED Every second
 
+In the first exercise we are gonna toggle the on board LED. The first step is to find out which GPIO port and pin the led is located at. 
 
+To find the pin configration open the project file 
 
 ```c
   /* Infinite loop */
@@ -47,7 +49,7 @@ To create your first STM32Project open
 ```
 
 
-## Project: Toggle an external LED on a breadboard every second
+## Exercise 2: Toggle an external LED on a breadboard every second
 
 In this 
 
@@ -55,7 +57,7 @@ In this
     <img src = "BlinkLed_bb.png">
 </p>
 
-## Project: Write "Hello There!" to putty over serial connection.
+## Exercise 3: Write "Hello There!" to putty over serial connection.
 
 
 
