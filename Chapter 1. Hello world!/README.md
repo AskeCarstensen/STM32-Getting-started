@@ -36,11 +36,6 @@ To create your first STM32Project open
   while (1)
   {
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
-
-	  strcpy((char*)buf, "Hello IOT!\r\n");
-	  HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
-
 	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
@@ -54,6 +49,11 @@ To create your first STM32Project open
 
 ## Project: Toggle an external LED on a breadboard every second
 
+In this 
+
+<p align="center">
+    <img src = "BlinkLed_bb.png">
+</p>
 
 ## Project: Write "Hello There!" to putty over serial connection.
 
@@ -61,6 +61,4 @@ To create your first STM32Project open
 
 
 
-<p align="center">
-    <img src = "BlinkLed_bb.png">
-</p>
+
