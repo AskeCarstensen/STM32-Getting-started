@@ -43,15 +43,14 @@ Now the project is setup and the next step is to configure pins, write code and 
 
 ## Exercise 1: Toggle the on board LED Every second
 
-In the first exercise we are gonna toggle the on board LED. The first step is to find out which GPIO port and pin the led is located at. 
+In the first exercise we are gonna toggle the on board LED. The first step is to find out which GPIO port and pin the led is located at. To find the pin configration open the project file and go to "Pinout & Configuration". 
 <p align="center">
     <img src = "PinConfig.png"width="800">
 </p>
 
-To find the pin configration open the project file 
 
 <p align="center">
-    <img src = "Mainz.png"width="800">
+    <img src = "Mainc.png"width="800">
 </p>
 
 ```c
