@@ -43,16 +43,17 @@ Now the project is setup and the next step is to configure pins, write code and 
 
 ## Exercise 1: Toggle the on board LED Every second
 
-In the first exercise we are gonna toggle the on board LED. The first step is to find out which GPIO port and pin the led is located at. To find the pin configration open the project file and go to "Pinout & Configuration". 
+In the first exercise we are gonna toggle the on board LED. The first step is to find out which GPIO port and pin the led is located at. To find the pin configration open the project file and go to "Pinout & Configuration". In our case it is GPIOA pin5.
 <p align="center">
     <img src = "PinConfig.png"width="800">
 </p>
 
-
+Then go to main.c. Here it is important that you only write code inside the comments with "USER CODE BEGINS" else it will be deleted every time you change the configuration.
 <p align="center">
     <img src = "Mainc.png"width="800">
 </p>
 
+To toggle the LED pin we are gonna use the HAL libray made by STM. HAL is a hardware abstraction layer, that will allow us to use the same methods over a series of microcontrollers. As shown below, we start with the method "HAL_PGIO_TogglePin and then tell it we want to toggle GPIOA, pin 5. Followed by a HAL_Delay of one second.
 ```c
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -69,7 +70,6 @@ In the first exercise we are gonna toggle the on board LED. The first step is to
 }
 ```
 
-
 ## Exercise 2: Toggle an external LED on a breadboard every second
 
 In this exercise an off-board LED will be toggled using the following setup:
@@ -78,13 +78,34 @@ In this exercise an off-board LED will be toggled using the following setup:
     <img src = "BlinkLed_bb.png">
 </p>
 
-To do this a GPIO pin must be assigned to a register 
+Then we need to assign a GPIO pin as a output, see image below.
 
 <p align="center">
     <img src = "PinConfigAddPin.png"width="800">
 </p>
 
+Then we repeart the same method as the one we used in the last exercise.
+
+```c
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+      HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
+	  HAL_Delay(1000);
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
+
 ## Exercise 3: Write "Hello There!" to putty over serial connection.
+
+Then 
 
 <p align="center">
     <img src = "Putty.png"width="350">
