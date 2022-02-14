@@ -105,16 +105,61 @@ Then we repeart the same method as the one we used in the last exercise.
 
 ## Exercise 3: Write "Hello There!" to putty over serial connection.
 
-Then 
+In this exercise we are gonna write a string from the MCU to your PC. In this example we are using a windows computer and putty. So the first step is to install [putty](https://www.putty.org/). Uart is setup by default, the init method can be found in the bottom of main.c.
 
-<p align="center">
-    <img src = "Putty.png"width="350">
-</p>
+The second step is creating a buffer for our string 
+
+```c
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+	uint8_t buf[15];
+
+  /* USER CODE END 1 */
+```
+
+Then using the Hal libray transmit our buffer 
+
+``` c
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
+
+	  strcpy((char*)buf, "Hello there!\r\n");
+	  HAL_UART_Transmit(&huart2, buf, strlen((char*)buf), HAL_MAX_DELAY);
+
+	  HAL_Delay(1000);
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
+```
+
+We also need to include "string.h" to use strcpy
+
+```c
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+#include "string.h"
+/* USER CODE END Includes */
+```
+
+The next step is to setup putty. First we need to look in device manager to find out which com port the nucleo borad is set to. 
+
 <p align="center">
     <img src = "DeviceManager.png"width="350">
 </p>
 
+Then go into putty and set the Speed (Baud rate) to 115200 and the comport to the one you found in the device manager. 
 
+<p align="center">
+    <img src = "Putty.png"width="350">
+</p>
 
-
-
+Now run your code and the MCU should print "Hello there!" and toggle the LED's every second.
