@@ -24,11 +24,11 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 ## Chapter 3 Interrupts
 
-- Internal
+- Setup external interupt
 
-- External 
+- Configure Timer (systick)
 
-- 
+- Configure hierarchy
 
 
 ## Chapter 4 Timers
