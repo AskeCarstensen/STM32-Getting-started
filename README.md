@@ -10,7 +10,17 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 ## Chapter 1 Hello world!
 
+- Toggle on board erhvers 
+
+- Toggle a exterenal LED
+
+- Write over serial to putty
+
 ## Chapter 2 GPIO
+
+- Setup GPIO input and output
+
+- Setup GPIO Clock
 
 ## Chapter 3 Interrupts
 
