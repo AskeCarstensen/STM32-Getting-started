@@ -81,7 +81,7 @@ In this exercise an off-board LED will be toggled using the following setup:
 Then we need to assign a GPIO pin as a output, see image below.
 
 <p align="center">
-    <img src = "PinConfigAddPin.png"width="800">
+    <img src = "PinConfigAddPin.png">
 </p>
 
 Then we repeart the same method as the one we used in the last exercise.
