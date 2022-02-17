@@ -13,7 +13,7 @@ In this chapter you will learn about:
 First we need to setup GPIOB pin 10 as a interrupt. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". 
 
 <p align="center">
-    <img src = "Set_interrupt_b10.png" width="500">
+    <img src = "Set_interrupt_b10.png", width="500">
 </p>
 
 Then code for the interrupt on GPIOB pin 10 will be generated. The interrupt handler function will be generated in the "stm32f4xx_it.c". You can find it at the same place as "main.c". In this file you should have a function as shown below.
@@ -63,7 +63,7 @@ void EXTI15_10_IRQHandler(void)
 Take out your breadboard, copy the schemeatic below and run the code.
 
 <p align="center">
-    <img src = "interuptbb.png" width="500"/>
+    <img src = "interuptbb.png", width="500">
 </p>
 
 
@@ -73,6 +73,6 @@ Take out your breadboard, copy the schemeatic below and run the code.
 If you are building a bigger system, with multiple interrupts. It is important to set the hierarchy of the interrupts. You have to decide which are most system and time critical. To modify it, go to "Pinout & Configuration" then open System core and NVIC. Here one can set a priority where "0" is top prority.
 
 <p align="center">
-    <img src = "set_interrupt.png" width="500">
+    <img src = "set_interrupt.png", width="500">
 </p>
 
