@@ -1,6 +1,6 @@
 # Chapter 3. Interupts
 
-In this chapter you will :
+In this chapter you will learn about:
 
 - How to setup a interrupt handler.
 

@@ -18,17 +18,19 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 ## Chapter 2 GPIO
 
-- Setup GPIO input and output
+- Configure GPIO pins to input and output
 
-- Setup GPIO Clock
+- Set Pull-Down or Pull-Up
+
+- Configure GPIO speed
 
 ## Chapter 3 Interrupts
 
-- Setup external interupt
+- How to setup a interrupt handler
 
-- Configure Timer (systick)
+- Toggle an led with a external interrupt trigger
 
-- Configure hierarchy
+- Set hierarchy of a interrupt handler
 
 
 ## Chapter 4 Timers
