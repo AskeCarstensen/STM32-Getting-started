@@ -63,7 +63,7 @@ void EXTI15_10_IRQHandler(void)
 Take out your breadboard, copy the schemeatic below and run the code.
 
 <p align="center">
-    <img src = "interuptbb.png" >
+    <img src = "interuptbb.png" width="500"/>
 </p>
 
 
