@@ -52,6 +52,5 @@ To test if the code works a circuit with an LED and a button is made, (to simpli
 
 
 ## Exercise 3: Configure GPIO speed
-
-If clock skew is a problem in ones 
+If further interested in this topic one can play with the speed of the GPIO output by changing it in the pin configuration but this requires equipment to measure with. For furhter information about this experiment consider chapter 5 in "Programming with STM32 Getting Started with the Nucleo Board and C/C++" by Donald Norris.
 
