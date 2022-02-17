@@ -19,7 +19,6 @@ First we need to setup GPIOB pin 10 as a interrupt. To setup the interrupt you n
 Then code for the interrupt on GPIOB pin 10 will be generated. The interrupt handler function will be generated in the "stm32f4xx_it.c". You can find it at the same place as "main.c". In this file you should have a function as shown below.
 
 ```c
-
 /**
   * @brief This function handles EXTI line[15:10] interrupts.
   */
@@ -36,12 +35,12 @@ void EXTI15_10_IRQHandler(void)
 }
 ```
 
+This mehtod will run every time GPIOB pin 10 goes high. From here we can make a led toggle or whatever one can imagine. But it is also important to remeber that the function will run, when any interrupt pin between 15-10 goes high. 1
 
- 
+## Exercise 2: Make a led toggle. 
 
-## Exercise 2: External interupts 
 
-In this exerise we will control a led with a interupt signal. 
+
 
 ## Exercise 3: Interupt hierarchy
 
