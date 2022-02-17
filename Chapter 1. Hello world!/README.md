@@ -27,15 +27,15 @@ To create your first STM32Project open the STM32CubeIDE and press "Start New STM
 
 In the window target select choose "Board selector" and type in your board name here shown with the NUCLE-F411RE development board:
  <p align="center">
-    <img src = "IDEBoardSelect.png"width="800">
+    <img src = "IDEBoardSelecter.png"width="800">
 </p>
 In the next window the project is defined by naming it, choosing the language, if it is an executable or library file and if STM32 is the target. Fill in the details and press next:
 <p align="center">
-    <img src = "IDEProjectSetup.png"width="350">
+    <img src = "IDEProjectSet.png"width="350">
 </p>
 If this is the first time using a board the IDE will download the relevant board files and this might take a few minutes:
 <p align="center">
-    <img src = "BoardDownload.png"width="350">
+    <img src = "BDownload.png"width="350">
 </p>
 
 Now the project is setup and the next step is to configure pins, write code and upload to the STM32.
@@ -45,12 +45,12 @@ Now the project is setup and the next step is to configure pins, write code and 
 
 In the first exercise we are gonna toggle the on board LED. The first step is to find out which GPIO port and pin the led is located at. To find the pin configration open the project file and go to "Pinout & Configuration". In our case it is GPIOA pin5.
 <p align="center">
-    <img src = "PinConfig.png"width="800">
+    <img src = "PinConf.png"width="800">
 </p>
 
 Then go to main.c. Here it is important that you only write code inside the comments with "USER CODE BEGINS" else it will be deleted every time you change the configuration.
 <p align="center">
-    <img src = "Mainc.png"width="800">
+    <img src = "Main.png"width="800">
 </p>
 
 To toggle the LED pin we are gonna use the HAL libray made by STM. HAL is a hardware abstraction layer, that will allow us to use the same methods over a series of microcontrollers. As shown below, we start with the method "HAL_PGIO_TogglePin and then tell it we want to toggle GPIOA, pin 5. Followed by a HAL_Delay of one second.
@@ -75,13 +75,13 @@ To toggle the LED pin we are gonna use the HAL libray made by STM. HAL is a hard
 In this exercise an off-board LED will be toggled using the following setup:
 
 <p align="center">
-    <img src = "BlinkLed_bb.png">
+    <img src = "Blink_bb.png">
 </p>
 
 Then we need to assign a GPIO pin as a output, see image below.
 
 <p align="center">
-    <img src = "PinConfigAddPin.png"width="800">
+    <img src = "AddPin.png"width="800">
 </p>
 
 Then we repeart the same method as the one we used in the last exercise.
@@ -153,13 +153,13 @@ We also need to include "string.h" to use strcpy
 The next step is to setup putty. First we need to look in device manager to find out which com port the nucleo borad is set to. 
 
 <p align="center">
-    <img src = "DeviceManager.png"width="350">
+    <img src = "DeviceM.png"width="350">
 </p>
 
 Then go into putty and set the Speed (Baud rate) to 115200 and the comport to the one you found in the device manager. 
 
 <p align="center">
-    <img src = "Putty.png"width="350">
+    <img src = "PuttyScreen.png"width="350">
 </p>
 
 Now run your code and the MCU should print "Hello there!" and toggle the LED's every second.
