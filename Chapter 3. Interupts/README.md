@@ -35,14 +35,40 @@ void EXTI15_10_IRQHandler(void)
 }
 ```
 
-This mehtod will run every time GPIOB pin 10 goes high. From here we can make a led toggle or whatever one can imagine. But it is also important to remeber that the function will run, when any interrupt pin between 15-10 goes high. 1
+This mehtod will run every time GPIOB pin 10 goes high. From here we can make a led toggle or whatever one can imagine. But it is also important to remeber that the function will run, when any interrupt pin between 15-10 goes high.
 
 ## Exercise 2: Make a led toggle. 
 
+First we are gonna repeart from Chapter 2, first setup GPIOB bin 5 as a GPIO output. Then setup GPIOB pin 10 with a pull down resistor. 
+
+Then add HAL_GPIO_TogglePin to the code example. This will make the led toggle between states, for every interrupt.
+
+```c
+/**
+  * @brief This function handles EXTI line[15:10] interrupts.
+  */
+void EXTI15_10_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_5);
+  /* USER CODE END EXTI15_10_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
+  HAL_GPIO_EXTI_IRQHandler(B1_Pin);
+  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+  /* USER CODE END EXTI15_10_IRQn 1 */
+}
+```
+
+Take out your breadboard, copy the schemeatic below and run the code.
+
+<p align="center">
+    <img src = "interupt_bb.PNG" width="500">
+</p>
 
 
 
 ## Exercise 3: Interupt hierarchy
 
-Make a interupt nest
+If you are building a bigger system, with multiple interrupts. It is important to 
 
