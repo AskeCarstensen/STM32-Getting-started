@@ -2,15 +2,42 @@
 
 In this chapter you will :
 
-- How to setup a interrupt.
+- How to setup a interrupt handler.
 
 - Toggle an led with a external interrupt tigger. 
 
 - Set hierarchy of a interrupt handler. 
 
-## Exercise 1: Internal interupts
+## Exercise 1: Setup a interrrupt handler.
 
-Here we will blink two led's. One controlled by a interrupt and the other with polling. 
+First we need to setup GPIOB pin 10 as a interrupt. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". 
+
+<p align="center">
+    <img src = "SET_INTERRUPT_B10.PNG" width="500">
+</p>
+
+Then code for the interrupt on GPIOB pin 10 will be generated. The interrupt handler function will be generated in the "stm32f4xx_it.c". You can find it at the same place as "main.c". In this file you should have a function as shown below.
+
+```c
+
+/**
+  * @brief This function handles EXTI line[15:10] interrupts.
+  */
+void EXTI15_10_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+  
+  /* USER CODE END EXTI15_10_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
+  HAL_GPIO_EXTI_IRQHandler(B1_Pin);
+  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+  /* USER CODE END EXTI15_10_IRQn 1 */
+}
+```
+
+
+ 
 
 ## Exercise 2: External interupts 
 
