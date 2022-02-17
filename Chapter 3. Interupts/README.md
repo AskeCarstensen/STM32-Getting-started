@@ -68,7 +68,11 @@ Take out your breadboard, copy the schemeatic below and run the code.
 
 
 
-## Exercise 3: Interupt hierarchy
+## Extra: Interupt hierarchy
 
-If you are building a bigger system, with multiple interrupts. It is important to 
+If you are building a bigger system, with multiple interrupts. It is important to set the hierarchy of the interrupts. You have to decide which are most system and time critical. To modify it, go to "Pinout & Configuration" then open System core and NVIC. Here one can set a priority where "0" is top prority.
+
+<p align="center">
+    <img src = "set_interrupt.PNG" width="500">
+</p>
 
