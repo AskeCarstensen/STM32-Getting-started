@@ -1,10 +1,19 @@
 In this chapter you will learn about:
 
-- How to Configure Usart
+- How to Configure Usart.
 
-- Setup Putty for serial communication
+- Setup Putty for serial communication.
 
-- How to send and receive using a terminal
+- How to transmit over serial from the nucelo board.
+    - Transmit using POLL method
+    - Transmit using interrupt
+    - Transmit using DMA
+
+- How to receive from serial on the nucelo baord.
+
+    - Receive with POLL method
+    - Receive with interrupt
+    - Receive with DMA
 
 ## Configure Usart on the nucleo
 When we created the project, usart was setup with standard settings. The auto generated code can be found in main.c 
