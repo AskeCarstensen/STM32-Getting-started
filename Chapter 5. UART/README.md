@@ -55,6 +55,12 @@ In the given code snippet we can see:
 - flow ctl none
 - oversampling is to 16
 
+This is the standard settings for alot of devices, but if you need to change these paramertes. You need to go the the "Pinout & configuration" tab again. Then go to, connectivity -> USART2 -> Parameter settings. Here one can modify the diffrent parameters. After changing them, press "ctrl + s" and then new configeration will be gernerated. 
+
+
+<p align="center">
+    <img src = "usartconfig.png"width="350">
+</p>
 
 
 ## Setup putty to send commands.
