@@ -156,7 +156,7 @@ The next step is to setup putty. First we need to look in device manager to find
     <img src = "DeviceM.png"width="350">
 </p>
 
-Then go into putty and set the Speed (Baud rate) to 115200 and the comport to the one you found in the device manager. 
+Then go into putty and set the Speed (Baud rate) to 115200 and the com port set to the one, you found in the device manager. 
 
 <p align="center">
     <img src = "PuttyScreen.png"width="350">
