@@ -135,7 +135,7 @@ The first step for setting up the usart interrupt is to enable it in NVIC Settin
     <img src = "setupInterrupt.png"width="350">
 </p>
 
-Then to transmit in interrupt mode call "HAL_UART_Transmit_IT". In the example below, a led is toggle every second, just as we did it in chapter 1., but this time we dont want to add the delay from transmitting 
+Then to transmit in interrupt mode call "HAL_UART_Transmit_IT". In the example below, a led is toggle every second, just as we did it in chapter 1., but this time we dont want to add the delay from transmitting with POLL. We do this by using interrupt mode and run the tranmission in the background.   
 
 ```c
   /* Infinite loop */
@@ -148,7 +148,51 @@ Then to transmit in interrupt mode call "HAL_UART_Transmit_IT". In the example b
 
 ```
 
-One can then call 
+One can then add "HAL_UART_TxCplitCallBack" outside of the main function. This function gets call when the interrupt transmission is completed. In the given code snippet below, HAL_UART_Transmit_IT is called again every time it completes. 
+
+```c
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+	HAL_UART_Transmit_IT(&huart2, buf, strlen((char*)buf));
+}
+```
+
+## Transmit using Direct Memory Access (DMA)
+
+
+## Receive with POLL method
+POLL method is the most simple way of receiving data over usart. Just as in the transmit part, we can receive with POLL with the default settings of the project. 
+
+In this example we are gonna show how to Receive a string and tell about the pitfalls.
+
+- First lets create 2 buffers
+
+```c
+/* Private variables ---------------------------------------------------------*/
+uint8_t Receive_buf[4];
+```
+
+- Then in the main loop add HAL_UART_Receive()
+
+```c
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  HAL_UART_Receive(&huart2, Receive_buf, 4, 1000); 
+```
+
+In this code snippet we are receiving over Usart for 1000 miliseconds(Timeout), for a message that is 4 bytes long. Here it is important to remeber that this is blocking our system for 1000 miliseconds and if you have a buffer that takes longer to read then you timeout, you won't get the whole message. 
+
+## Recive with Interrupt
+
+
+
+
+
+
 
 
 
