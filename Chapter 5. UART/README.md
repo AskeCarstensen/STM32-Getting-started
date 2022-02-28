@@ -7,16 +7,14 @@ In this chapter you will learn about:
 - Setup Putty for serial communication.
 
 - How to transmit over serial from the nucelo board.
-https://controllerstech.com/uart-transmit-in-stm32/
     - Transmit using POLL method
     - Transmit using interrupt
-    - Transmit using DMA
 
 - How to receive from serial on the nucelo baord.
-https://controllerstech.com/uart-receive-in-stm32/
     - Receive with POLL method
     - Receive with interrupt
-    - Receive with DMA
+
+"Noget omkring DMA og hvordan vi kommer til at lærer om det senere og hvor populart det er"
 
 ## Configure Usart on the nucleo
 When we created the project, usart was setup with standard settings. The auto generated code can be found in main.c and is shown below.
@@ -159,9 +157,6 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 }
 ```
 
-## Transmit using Direct Memory Access (DMA)
-
-
 ## Receive with POLL method
 POLL method is the most simple way of receiving data over usart. Just as in the transmit part, we can receive with POLL with the default settings of the project. 
 
@@ -181,17 +176,39 @@ uint8_t Receive_buf[4];
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_UART_Receive(&huart2, Receive_buf, 4, 1000); 
+	  HAL_UART_Receive(&huart2, Receive_buf, 10, 1000); 
 ```
 
-In this code snippet we are receiving over Usart for 1000 miliseconds(Timeout), for a message that is 4 bytes long. Here it is important to remeber that this is blocking our system for 1000 miliseconds and if you have a buffer that takes longer to read then you timeout, you won't get the whole message. 
+In this code snippet we are receiving over Usart for 1000 miliseconds(Timeout), for a message that is 10 bytes long. Here it is important to remeber that this is blocking our system for 1000 miliseconds and if you have a buffer that takes longer to read then you timeout, you won't get the whole message. 
 
-## Recive with Interrupt
+To test this, set a break point at the uart receive line and setup putty as described earlier. Then cehck what get writing to the buffer.
 
+## Receive with Interrupt
 
+To setup the interrupt on Usart for receiving, we do the same as in the transmission part. Then just as in the tranmission part we start with setup our usart receive interrupt. 
 
+```c
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  /* USER CODE BEGIN 2 */
+  HAL_UART_Receive_IT (&huart2, Receive_buf, 4);
+```
 
+Then outside of our main we define our callback function, and call the usart receive interrupt again. If not the system will stop listining after the first interrupt. 
 
+```c
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) 
+{
+  HAL_UART_Receive_IT(&huart2, Receive_buf, 4); 
+}
+```
+
+With this method we have a non blocking way of continously listen for serial input. 
+
+Then to test the code, set a breakpoint in the callback method and run the program in debug mode. 
 
 
 
