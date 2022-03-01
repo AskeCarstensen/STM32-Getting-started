@@ -1,3 +1,4 @@
+# Chapter 4 Timers
 In this chapter you will learn about:
 
 - Timers
