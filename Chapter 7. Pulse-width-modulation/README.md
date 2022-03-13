@@ -4,7 +4,7 @@ In this chapter you will learn to setup pulse width modulation (PWM) in STM32Cub
 - Setup timer for PWM
 - Dimming a led
 
-PWM is one of the core functions of timers, used in a variaty of applications. In short it consist of a pulse running at a certain frequency, where one can vary the witdh of the pulse. This means that one can set the pulse to only be high 10 % of the time, which gives a duty cycle of 10. 
+PWM is one of the core functions of timers, used in a variaty of applications. In short it consist of a pulse running at a certain frequency, where one can vary the witdh of the pulse. This means that one can set the pulse to only be high 10 % of the time, which gives a duty cycle of 10. This is typical used to control the avergae power of a signal by varying the dutycycle. A popalur way of illutration this is by dimming a led as we will do in the exercise. 
 
 For a more in-depth explanation read Deepblueembedded's artikel: https://deepbluembedded.com/stm32-pwm-example-timer-pwm-mode-tutorial/
 
