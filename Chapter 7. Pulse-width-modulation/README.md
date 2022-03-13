@@ -1,13 +1,12 @@
 # Chapter 7. Pulse width modulation
-In this chapter you will learn about pulse width modulation (PWM):
+In this chapter you will learn to setup pulse width modulation (PWM) in STM32CubeIDE:
 
-- What PWM is
 - How to setup PWM in CUBEMX
 - How to use PWM to dim an LED
 
-## Introduction: Pulse witdh modulation
+PWM is one of the core functions of timers, used in a variaty of applications. In short it consist of a pulse running at a certain frequency, where one can vary the witdh of the pulse. This means that one can set the pulse to only be high 10 % of the time, which gives a duty cycle of 10. 
 
-PWM is one of the core functions of timers, used in a variaty of applications. In short it consist of a pulse running at a certain frequency, where one can vary the ratio of the witdh of the pulse. This means that one can set the pulse to only be high 10 % of the time, this is a duty cycle of 10. 
+
 
 For a more in-depth explanation read Deepblueembedded's artikel: https://deepbluembedded.com/stm32-pwm-example-timer-pwm-mode-tutorial/
 
