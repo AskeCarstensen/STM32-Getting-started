@@ -10,13 +10,13 @@ In this chapter you will learn about:
 
 ## Exercise 1: Setup a interrrupt handler.
 
-First we need to setup GPIOB pin 10 as a interrupt. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". 
+First we need to setup GPIOB pin 10 as a interrupt and set the GPIO pin as a pull down as is was shown in the last chapter. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". 
 
 <p align="center">
     <img src = "Set_interrupt_b10.png", width="500">
 </p>
 
-Then code for the interrupt on GPIOB pin 10 will be generated. The interrupt handler function will be generated in the "stm32f4xx_it.c". You can find it at the same place as "main.c". In this file you should have a function as shown below.
+Then code for the interrupt on GPIOB pin 10 will be generated. First we see a function in  "stm32f4xx_it.c" that handels interrupts on the lines from 10 to 15. 
 
 ```c
 /**
@@ -35,30 +35,54 @@ void EXTI15_10_IRQHandler(void)
 }
 ```
 
-This mehtod will run every time GPIOB pin 10 goes high. From here we can make a led toggle or whatever one can imagine. But it is also important to remeber that the function will run, when any interrupt pin between 15-10 goes high.
-
-## Exercise 2: Make a led toggle. 
-
-First we are gonna repeart from Chapter 2, first setup GPIOB bin 5 as a GPIO output. Then setup GPIOB pin 10 with a pull down resistor. 
-
-Then add HAL_GPIO_TogglePin to the code example. This will make the led toggle between states, for every interrupt.
+This calls HAL_GPIO_EXTI_IRQHandler which is located in "stm32f4xx_hal_gpio.c". This function clears the interrupt flag and calls the ISR Handler callback function (HAL_GPIO_EXTI_Callback) with the trigged GPIO pin as a argument.
 
 ```c
 /**
-  * @brief This function handles EXTI line[15:10] interrupts.
+  * @brief  This function handles EXTI interrupt request.
+  * @param  GPIO_Pin Specifies the pins connected EXTI line
+  * @retval None
   */
-void EXTI15_10_IRQHandler(void)
+void HAL_GPIO_EXTI_IRQHandler(uint16_t GPIO_Pin)
 {
-  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
-  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_5);
-  /* USER CODE END EXTI15_10_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
-  HAL_GPIO_EXTI_IRQHandler(B1_Pin);
-  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
-
-  /* USER CODE END EXTI15_10_IRQn 1 */
+  /* EXTI line interrupt detected */
+  if(__HAL_GPIO_EXTI_GET_IT(GPIO_Pin) != RESET)
+  {
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+    HAL_GPIO_EXTI_Callback(GPIO_Pin);
+  }
 }
 ```
+
+This means HAL_GPIO_EXTI_Callback will be called every time our interrupt is high. 
+
+## Exercise 2: Make a led toggle. 
+
+First we are gonna repeart from Chapter 2, first setup GPIOB bin 5 as a GPIO output and remember to setup GPIOB pin 10 with a pull down resistor. 
+
+The next step is to add the callback method in out main, as shown in the code snippet below.
+
+```c
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    if(GPIO_Pin == GPIO_PIN_10)
+    {
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_5);
+    }
+}
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
+int main(void)
+{
+```
+
+Now the led will toggle every time GPIO B pin 10 is high. 
 
 Take out your breadboard, copy the schemeatic below and run the code.
 
