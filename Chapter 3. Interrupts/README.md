@@ -10,7 +10,7 @@ In this chapter you will learn about:
 
 Interrupts is a way of either with hardware or software pause a processors current job (if premitted) and execute a time sensitive event. Most microcontrolles has a dedicated hardware for interrupts called Interrupts Service Routine(ISR). 
 
-If you want more information about interrupts wikipedia has a good artikel: https://en.wikipedia.org/wiki/Interrupt 
+If you want more theory about interrupts tutorialspoint has a good artikel: https://www.tutorialspoint.com/embedded_systems/es_interrupts.htm 
 
 
 ## Exercise 1: Setup a interrrupt handler.
