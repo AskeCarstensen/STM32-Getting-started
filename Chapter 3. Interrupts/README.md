@@ -8,6 +8,11 @@ In this chapter you will learn about:
 
 - Set hierarchy of a interrupt handler. 
 
+Interrupts is a way of either with hardware or software pause a processors current job (if premitted) and execute a time sensitive event. Most microcontrolles has a dedicated hardware for interrupts called Interrupts Service Routine(ISR). 
+
+If you want more information about interrupts wikipedia has a good artikel: https://en.wikipedia.org/wiki/Interrupt 
+
+
 ## Exercise 1: Setup a interrrupt handler.
 
 First we need to setup GPIOB pin 10 as a interrupt and set the GPIO pin as a pull down as is was shown in the last chapter. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". 
