@@ -5,14 +5,14 @@
     <img src = "STM32CubeLogo.png">
 </p>
 This chapter will walk you through setting up STM32CubeIDE for the first time and running HelloWorld on your board. This project uses the NUCLEO-F411RE board but this guide should be applicable to other STM as well.
-Subchapters:
+
+Overview :
 
 - Install STM32CubeIDE 
 - Create a STM32 Project
 - Toggle the on board LED every second.
 - Toggle a external LED on a breadboard every second.
-- Write “Hello There!” to putty over serial connection.
-
+- Write “Hello There!” to putty over uart.
 
 ## Info: Install STM32CubeIDE
 Download IDE from: https://www.st.com/en/development-tools/stm32cubeide.html
@@ -103,7 +103,7 @@ Then we repeart the same method as the one we used in the last exercise.
 }
 ```
 
-## Exercise 3: Write "Hello There!" to putty over serial connection.
+## Exercise 3: Write "Hello There!" to putty over uart.
 
 In this exercise we are gonna write a string from the MCU to your PC. In this example we are using a windows computer and putty. So the first step is to install [putty](https://www.putty.org/). Uart is setup by default, the init method can be found in the bottom of main.c.
 
