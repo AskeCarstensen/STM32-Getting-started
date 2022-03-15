@@ -14,10 +14,12 @@ In this chapter you will learn about:
     - Receive with POLL method
     - Receive with interrupt
 
-"Noget omkring DMA og hvordan vi kommer til at lærer om det senere og hvor populart det er"
+In embedded communication we have two main catorigies, serial and parallel communication. In this chapter the focus will be serial communication, with the protocol USART(Universal Synchronous Asynchronous Receiver Transmitter) and UART(Universal Asynchronous Receiver Transmitter). The diffrence between USART and UART is that USART can both run in asynchronus mode as the UART and run in synchronus mode. The board has a USART connector but we will run the examples, in asynchronus mode.  
 
-## Configure Usart on the nucleo
-When we created the project, usart was setup with standard settings. The auto generated code can be found in main.c and is shown below.
+Later in chapter 8, there will be a introduction to DMA(Direct Memory Access), which is used a lot in serial communication. DMA is very useful when you have large amount of data, and want a non blocking method, but that will not be covred in this chapter.
+
+## Configure uart on the nucleo
+When we created the project, uart was setup with standard settings. The auto generated code can be found in main.c and is shown below.
 
 ```c
 /**
@@ -56,13 +58,11 @@ static void MX_USART2_UART_Init(void)
 
 In the given code snippet we can see: 
 (Skal skrive om, mangler info)
-- we are using USART2
-- baudrate is set to 115200
-- 8 bit
-- parity is none
-- tx rx
-- flow ctl none
-- oversampling is to 16
+- we are using USART2 in asynchronus mode aka. UART. This means we need to set the following settings
+- Since we dont have a shared clock we need to specify how fast the data is transfed . This is called the baudrate, in this example we are gonna set it to 115200.
+- Then we need to set the size of the data chuncks, the most common is 8 bit.
+- parity bits is a simple form of error dectection in data transfer. If you have a noisy enveriment it could be a good idea to enable, but in this example we will set it to None.
+- The stop bits also called synchroizationbits is the number of bits to be set in the end of a data packet. This is normally set to 1.
 
 This is the standard settings for alot of devices, but if you need to change these paramertes. You need to go the the "Pinout & configuration" tab again. Then go to, connectivity -> USART2 -> Parameter settings. Here one can modify the diffrent parameters. After changing them, press "ctrl + s" and then new configeration will be gernerated. 
 
