@@ -5,7 +5,7 @@
 </p>
 
 
-This repo is a product of a course at DTU (Denmarks Technical University). The purpose of this repo is give a introduction to the stm32CubeIde on a stm32 developer board. The 
+This repo is a product of a course at DTU (Denmarks Technical University). The purpose of this repo is give a introduction to the stm32CubeIde on a stm32 developer board. The diffrent chapters is based on the book "Programming with stm32 - getting stared with nucleo board and c/c++" by Donald Norris.
 
 
 ## Chapter 1 Hello world!
