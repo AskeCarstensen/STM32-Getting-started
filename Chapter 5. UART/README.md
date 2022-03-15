@@ -4,7 +4,7 @@ In this chapter you will learn about:
 
 - How to Configure UART.
 
-- Setup Putty for serial communication.
+- Setup STM32CubeIDE for serial communication
 
 - How to transmit over serial from the nucelo board.
     - Transmit using POLL method
@@ -57,7 +57,7 @@ static void MX_USART2_UART_Init(void)
 ```
 
 In the given code snippet we can see: 
-- we are using USART2 in asynchronus mode aka. UART. This means we need to set the following settings
+- we are using USART2 in asynchronus mode. This means we need to set the following settings
 - Since we dont have a shared clock we need to specify how fast the data is transfed . This is called the baudrate, in this example we are gonna set it to 115200.
 - Then we need to set the size of the data chuncks, the most common is 8 bit.
 - parity bits is a simple form of error dectection in data transfer. If you have a noisy enveriment it could be a good idea to enable, but in this example we will set it to None.
@@ -70,19 +70,27 @@ This is the standard settings for alot of devices, but if you need to change the
     <img src = "usartconfig.png"width="350">
 </p>
 
-From here the 
-
-
-
-
-## Setup putty to send commands.
-
-First we need to setup putty to be able to send serial commands to our nucleo board. Set com port, baud rate and etc., like you did in chapter 1. Click on Terminal in the option menu to the right. Here we need to enable "implicit CR in every LF", local echo to "Force on". (see image)
+## setup console for serial communication
+For serial communication, there is a wide variety of programs available. In this chapter we are gonna use the buildin console.
+STM32CubeIDE has a bulidin console for serial communication. To open it clock on the console windown and command shell console, as shown in the iamge below.
 
 <p align="center">
-    <img src = "setupPutty.png"width="350">
+    <img src = "command_shell.png"width="350">
 </p>
 
+Then in the remote connection window click on "new"
+
+<p align="center">
+    <img src = "remote_connection.png"width="350">
+</p>
+
+Give your connection a name and go to device manager and find which com port your device is on. In serial port, pick the com port your device is on and set the settings to the same as indecated in the previuos section. 
+
+<p align="center">
+    <img src = "port_connection.png"width="350">
+</p>
+
+Then press finsh and ok. 
 
 ## Transmit using POLL method
 
@@ -179,7 +187,7 @@ uint8_t Receive_buf[4];
 
 In this code snippet we are receiving over UART for 1000 miliseconds(Timeout), for a message that is 10 bytes long. Here it is important to remeber that this is blocking our system for 1000 miliseconds and if you have a buffer that takes longer to read then you timeout, you won't get the whole message. 
 
-To test this, set a break point at the uart receive line and setup putty as described earlier. Then cehck what get writing to the buffer.
+To test this, set a break point at the uart receive line and setup console as described earlier. Then cehck what get writing to the buffer.
 
 ## Receive with Interrupt
 

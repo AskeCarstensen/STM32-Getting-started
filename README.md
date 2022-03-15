@@ -10,11 +10,15 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 ## Chapter 1 Hello world!
 
-- Toggle on board LED 
+- Install STM32CubeIDE 
 
-- Toggle a external LED
+- Create a STM32 Project
 
-- Write over serial to putty
+- Toggle the on board LED every second.
+
+- Toggle a external LED on a breadboard every second.
+
+- Write “Hello There!” to putty over uart.
 
 ## Chapter 2 GPIO
 
@@ -35,17 +39,17 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 ## Chapter 4 Timers
 
-- What is timers
+- Timers
 
 - How to initialize a timer
 
-- How to use timers to tigger intterupt
+- How to use timers to trigger interrupt
 
 ## Chapter 5 Communication xx
 
 - How to configure Usart
 
-- Setup putty for serial communication
+- Setup STM32CubeIDE for serial communication
 
 - How to trasnsmit over sieral from the nucelo board
 
@@ -61,11 +65,15 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 ## Chapter 7 Pulse Width Modulation
 
-- What PWM is 
+- Setup timer for PWM
 
-- How to setup PWM in CUBEMX
-
-- How to use PWM to dim an LED
+- Dimming a led
 
 ## Chapter 8 Direct Memory Access
+
+- What DMA is
+
+- How to enable DMA 
+
+- How to use DMA to receive an input
 
