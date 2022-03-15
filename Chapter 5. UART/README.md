@@ -14,7 +14,7 @@ In this chapter you will learn about:
     - Receive with POLL method
     - Receive with interrupt
 
-In embedded communication we have two main catorigies, serial and parallel communication. In this chapter the focus will be serial communication, with the protocol USART(Universal Synchronous Asynchronous Receiver Transmitter) and UART(Universal Asynchronous Receiver Transmitter). The diffrence between USART and UART is that USART can run in both asynchronus mode as the UART and run in synchronus mode. Our nucelo board has a USART connector but we will run the examples, in asynchronus mode. i.e.  
+In embedded communication we have two main catorigies, serial and parallel communication. In this chapter the focus will be serial communication, with the protocol USART(Universal Synchronous Asynchronous Receiver Transmitter) and UART(Universal Asynchronous Receiver Transmitter). The diffrence between USART and UART is that USART can run in both asynchronus mode as the UART and run in synchronus mode. Our nucelo board has a USART connector but we will run the examples, in asynchronus mode.
 
 Later in chapter 8, there will be a introduction to DMA(Direct Memory Access), which is used a lot in serial communication. DMA is very useful when you have large amount of data, and want a non blocking method, but that will not be covred in this chapter.
 
