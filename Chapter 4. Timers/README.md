@@ -1,7 +1,7 @@
 # Chapter 4 Timers
 In this chapter you will learn about:
 
-- Timers
+- Introduction to Timers
 - How to initialize a timer
 - How to use timers to trigger an interrupt
 
