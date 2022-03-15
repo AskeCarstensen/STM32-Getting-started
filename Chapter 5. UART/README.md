@@ -1,8 +1,8 @@
-# Chapter 5. USART!
+# Chapter 5. UART!
 
 In this chapter you will learn about:
 
-- How to Configure Usart.
+- How to Configure UART.
 
 - Setup Putty for serial communication.
 
@@ -14,10 +14,12 @@ In this chapter you will learn about:
     - Receive with POLL method
     - Receive with interrupt
 
-"Noget omkring DMA og hvordan vi kommer til at lærer om det senere og hvor populart det er"
+In embedded communication we have two main catorigies, serial and parallel communication. In this chapter the focus will be serial communication, with the protocol USART(Universal Synchronous Asynchronous Receiver Transmitter) and UART(Universal Asynchronous Receiver Transmitter). The diffrence between USART and UART is that USART can run in both asynchronus mode as the UART and run in synchronus mode. Our nucelo board has a USART connector but we will run the examples, in asynchronus mode.
 
-## Configure Usart on the nucleo
-When we created the project, usart was setup with standard settings. The auto generated code can be found in main.c and is shown below.
+Later in chapter 8, there will be a introduction to DMA(Direct Memory Access), which is used a lot in serial communication. DMA is very useful when you have large amount of data, and want a non blocking method, but that will not be covred in this chapter.
+
+## Configure uart on the nucleo
+When we created the project, uart was setup with standard settings. The auto generated code can be found in main.c and is shown below.
 
 ```c
 /**
@@ -55,14 +57,11 @@ static void MX_USART2_UART_Init(void)
 ```
 
 In the given code snippet we can see: 
-(Skal skrive om, mangler info)
-- we are using USART2
-- baudrate is set to 115200
-- 8 bit
-- parity is none
-- tx rx
-- flow ctl none
-- oversampling is to 16
+- we are using USART2 in asynchronus mode aka. UART. This means we need to set the following settings
+- Since we dont have a shared clock we need to specify how fast the data is transfed . This is called the baudrate, in this example we are gonna set it to 115200.
+- Then we need to set the size of the data chuncks, the most common is 8 bit.
+- parity bits is a simple form of error dectection in data transfer. If you have a noisy enveriment it could be a good idea to enable, but in this example we will set it to None.
+- The stop bits also called synchroizationbits is the number of bits to be set in the end of a data packet. This is normally set to 1.
 
 This is the standard settings for alot of devices, but if you need to change these paramertes. You need to go the the "Pinout & configuration" tab again. Then go to, connectivity -> USART2 -> Parameter settings. Here one can modify the diffrent parameters. After changing them, press "ctrl + s" and then new configeration will be gernerated. 
 
@@ -87,7 +86,7 @@ First we need to setup putty to be able to send serial commands to our nucleo bo
 
 ## Transmit using POLL method
 
-Poll method is the most simple way of transferring data. The down side of poll is, while transmitting the data it will block all other operation. The good thing about poll is, its good for transferring large amount of data simple and good if the programs jobs are only transferring over usart. 
+Poll method is the most simple way of transferring data. The down side of poll is, while transmitting the data it will block all other operation. The good thing about poll is, its good for transferring large amount of data simple and good if the programs jobs are only transferring over UART. 
 
 The setup for poll is simple and was the one we used in chapter 1. The code snippet below shows a basic setup.
 
@@ -126,7 +125,7 @@ Then to resolve this problem we can use interupt or DMA for transmitting the dat
 
 ## Transmit using Interrupt
 
-The first step for setting up the usart interrupt is to enable it in NVIC Settings, go to Pinout & Configuration -> Connectivity -> USART2( or whatever port you are using) -> NVIC Settings. (See image below) Then press "ctrl + s" and generate the new code.
+The first step for setting up the UART interrupt is to enable it in NVIC Settings, go to Pinout & Configuration -> Connectivity -> USART2( or whatever port you are using) -> NVIC Settings. (See image below) Then press "ctrl + s" and generate the new code.
 
 <p align="center">
     <img src = "setupInterrupt.png"width="350">
@@ -157,7 +156,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
 ```
 
 ## Receive with POLL method
-POLL method is the most simple way of receiving data over usart. Just as in the transmit part, we can receive with POLL with the default settings of the project. 
+POLL method is the most simple way of receiving data over UART. Just as in the transmit part, we can receive with POLL with the default settings of the project. 
 
 In this example we are gonna show how to Receive a string and tell about the pitfalls.
 
@@ -178,13 +177,13 @@ uint8_t Receive_buf[4];
 	  HAL_UART_Receive(&huart2, Receive_buf, 10, 1000); 
 ```
 
-In this code snippet we are receiving over Usart for 1000 miliseconds(Timeout), for a message that is 10 bytes long. Here it is important to remeber that this is blocking our system for 1000 miliseconds and if you have a buffer that takes longer to read then you timeout, you won't get the whole message. 
+In this code snippet we are receiving over UART for 1000 miliseconds(Timeout), for a message that is 10 bytes long. Here it is important to remeber that this is blocking our system for 1000 miliseconds and if you have a buffer that takes longer to read then you timeout, you won't get the whole message. 
 
 To test this, set a break point at the uart receive line and setup putty as described earlier. Then cehck what get writing to the buffer.
 
 ## Receive with Interrupt
 
-To setup the interrupt on Usart for receiving, we do the same as in the transmission part. Then just as in the tranmission part we start with setup our usart receive interrupt. 
+To setup the interrupt on UART for receiving, we do the same as in the transmission part. Then just as in the tranmission part we start with setup our UART receive interrupt. 
 
 ```c
   /* Initialize all configured peripherals */
@@ -194,7 +193,7 @@ To setup the interrupt on Usart for receiving, we do the same as in the transmis
   HAL_UART_Receive_IT (&huart2, Receive_buf, 4);
 ```
 
-Then outside of our main we define our callback function, and call the usart receive interrupt again. If not the system will stop listining after the first interrupt. 
+Then outside of our main we define our callback function, and call the UART receive interrupt again. If not the system will stop listining after the first interrupt. 
 
 ```c
 /* Private user code ---------------------------------------------------------*/
