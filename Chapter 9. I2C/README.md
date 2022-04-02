@@ -48,7 +48,7 @@ int main(void)
   /* USER CODE END 1 */
 
 ```
-Now we transmit one byte, which tells our IC that we want to read the temperature, and check wheter the transmission succeed. 
+Now we transmit one byte with the function from the HAL libary HAL_I2C_Master_Transmit. Hhis tells our IC that we want to read the temperature, and check wheter the transmission succeed. 
 
 ```c
   while (1)
@@ -61,7 +61,7 @@ Now we transmit one byte, which tells our IC that we want to read the temperatur
 	  }
 ```
 
-Next step is to receive the data from the sensor. For this we add the following to the while loop
+Next step is to receive the data from the sensor. For this we use HAL_I2C_Master_Receive and we add the following to the while loop. 
 
 ```c
 
