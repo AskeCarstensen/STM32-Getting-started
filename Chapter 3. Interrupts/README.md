@@ -15,7 +15,7 @@ If you want more theory about interrupts tutorialspoint has a good artikel: http
 
 ## Exercise 1: Setup a interrrupt handler.
 
-First we need to setup GPIOB pin 10 as a interrupt and set the GPIO pin as a pull down as is was shown in the last chapter. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". 
+First we need to setup GPIOB pin 10 as a interrupt and set the GPIO pin as a pull down as is was shown in the last chapter. To setup the interrupt you need to go to the "pinout & configuration", then find PB10 on the MCU and select "GPIO_EXTI10". Next step is to navigate to "System Core"->NVIC and enable the interrupt (EXTI line[15:10] interrupts)
 
 <p align="center">
     <img src = "Set_interrupt_b10.png", width="500">
