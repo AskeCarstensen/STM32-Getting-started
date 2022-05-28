@@ -77,3 +77,10 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 - How to use DMA to receive an input
 
+# Chapter 9. RTOS
+
+- What is RTOS
+
+- How to setup RTOS 
+
+- How to setup two tasks in RTOS
