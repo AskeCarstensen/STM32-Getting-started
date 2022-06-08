@@ -42,6 +42,7 @@ We are gonna make two while loops, in which we make steps of 2 up and down in ou
 ```c
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint8_t duty_cycle = 0;
   while (1)
   {
 
