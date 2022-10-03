@@ -1,4 +1,4 @@
-# Chapter 9. RTOS
+# Chapter 10. RTOS
 In this chapter you will learn about Real Time Operating System:
 - What is RTOS
 - How to setup RTOS 

@@ -77,7 +77,15 @@ This repo is a product of a course at DTU (Denmarks Technical University). The p
 
 - How to use DMA to receive an input
 
-# Chapter 9. RTOS
+# Chapter 9. I2C - Inter-integrated Circuit
+
+- How to setup I2C in STM32CubeIDE
+
+- How to transmit over I2C 
+
+- How to receive over I2C
+
+# Chapter 10. RTOS
 
 - What is RTOS
 
